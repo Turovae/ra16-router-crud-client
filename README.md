@@ -1,4 +1,4 @@
-[![Deploy static content to Pages](https://github.com/Turovae/ra16-router-crud-client-client/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/Turovae/ra16-router-crud-client/actions/workflows/jekyll-gh-pages.yml)
+[![Deploy static content to Pages](https://github.com/Turovae/ra16-router-crud-client/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/Turovae/ra16-router-crud-client/actions/workflows/jekyll-gh-pages.yml)
 
 ---
 
