@@ -1,35 +1,103 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import moment from "moment";
+moment.locale("ru", {
+  months: [
+    "января",
+    "февраля",
+    "марта",
+    "апреля",
+    "мая",
+    "июня",
+    "июля",
+    "августа",
+    "сентября",
+    "октября",
+    "ноября",
+    "декабря",
+  ],
+});
 
-function App() {
-  const [count, setCount] = useState(0)
+const getDate = (): string => {
+  const date = new Date();
+  return moment(date).format("HH:mm DD MMMM YYYY");
+};
 
+function Post({ created, body }: { created: string; body: string }) {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="post">
+      <div className="post-header">
+        <span className="post-author">No Name</span>{" "}
+        <span className="post-created">{created}</span>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <div className="post-content">{body}</div>
+    </div>
+  );
 }
 
-export default App
+function NewPost() {
+  return (
+    <form className="post-new">
+      <div className="post-control">
+        <button className="btn btn-icon">
+          <span className="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div className="post-input">
+        <div className="post-img"></div>
+        <input className="post-textarea" placeholder="Введите текст" />
+      </div>
+      <div className="post-control bottom">
+        <button type="submit" className="btn">
+          Опубликовать
+        </button>
+      </div>
+    </form>
+  );
+}
+
+function WiewPost({ created, body }: { created: string; body: string }) {
+  return (
+    <div className="post-view">
+      <div className="post">
+        <div className="post-header">
+          <span className="post-author">No Name</span>{" "}
+          <span className="post-created">{created}</span>
+        </div>
+        <div className="post-content">{body}</div>
+      </div>
+      <form className="post-control bottom">
+        <button type="submit" className="btn">
+          Изменить
+        </button>
+        <button type="button" className="btn btn-delete">
+          Удалить
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="app">
+      <form className="menu">
+        <button className="btn" type="submit">
+          Создать пост
+        </button>
+      </form>
+      <div className="posts">
+        <Post created={getDate()} body="Пост, относящийся к курсу React" />
+        <Post
+          created={getDate()}
+          body="Другой пост, относящийся к курсу по React"
+        />
+      </div>
+      <NewPost />
+      <WiewPost
+        created={getDate()}
+        body="Третий пост, относящийся к курсу по React"
+      />
+    </div>
+  );
+}
+
+export default App;
