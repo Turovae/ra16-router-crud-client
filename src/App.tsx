@@ -4,6 +4,7 @@ import Root from "./routes/Root";
 import NewPost from "./routes/NewPost";
 import ViewPost from "./routes/ViewPost";
 import EditPost from "./routes/EditPost";
+import { Route, Routes } from "react-router-dom";
 
 moment.locale("ru", {
   months: [
@@ -30,13 +31,18 @@ const getDate = (): string => {
 function App() {
   return (
     <div className="app">
-      <Root />
-      <NewPost />
-      <ViewPost
-        created={getDate()}
-        body="Третий пост, относящийся к курсу по React"
-      />
-      <EditPost body="Редактируемый пост" />
+      <Routes>
+        <Route path="/" element={<Root />} />
+        <Route path="posts/new" element={<NewPost />} />
+        <Route
+          path="posts/:id"
+          element={<ViewPost created={getDate()} body="Третий пост" />}
+        />
+        <Route
+          path="posts/:id/edit"
+          element={<EditPost body="Редактируемый пост" />}
+        />
+      </Routes>
     </div>
   );
 }
