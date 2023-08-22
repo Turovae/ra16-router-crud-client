@@ -1,10 +1,5 @@
 import moment from "moment";
 
-import Root from "./routes/Root";
-import NewPost from "./routes/NewPost";
-import ViewPost from "./routes/ViewPost";
-import EditPost from "./routes/EditPost";
-
 moment.locale("ru", {
   months: [
     "января",
@@ -27,18 +22,18 @@ const getDate = (): string => {
   return moment(date).format("HH:mm DD MMMM YYYY");
 };
 
-function App() {
+import Post from "./Post";
+
+function Posts() {
   return (
-    <div className="app">
-      <Root />
-      <NewPost />
-      <ViewPost
+    <div className="posts">
+      <Post created={getDate()} body="Пост, относящийся к курсу React" />
+      <Post
         created={getDate()}
-        body="Третий пост, относящийся к курсу по React"
+        body="Другой пост, относящийся к курсу по React"
       />
-      <EditPost body="Редактируемый пост" />
     </div>
   );
 }
 
-export default App;
+export default Posts;
