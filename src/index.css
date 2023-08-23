@@ -105,6 +105,8 @@ body {
   cursor: pointer;
   margin-left: 10px;
   transition: background-color .3s;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .btn:hover {

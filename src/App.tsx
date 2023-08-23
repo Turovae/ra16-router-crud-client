@@ -1,6 +1,6 @@
 import moment from "moment";
 
-import Root from "./routes/Root";
+import Root, { loader as rootLoader } from "./routes/Root";
 import NewPost from "./routes/NewPost";
 import ViewPost from "./routes/ViewPost";
 import EditPost from "./routes/EditPost";
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<Root />} />
+        <Route path="/" element={<Root />} loader={rootLoader} />
         <Route path="posts/new" element={<NewPost />} />
         <Route
           path="posts/:id"

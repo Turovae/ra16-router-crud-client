@@ -24,14 +24,16 @@ const getDate = (): string => {
 
 import Post from "./Post";
 
-function Posts() {
+function Posts({ posts }: { posts: { id: number; content: string }[] }) {
   return (
     <div className="posts">
-      <Post created={getDate()} body="Пост, относящийся к курсу React" />
-      <Post
-        created={getDate()}
-        body="Другой пост, относящийся к курсу по React"
-      />
+      {posts.length ? (
+        posts.map((post) => (
+          <Post created={getDate()} key={post.id} body={post.content} />
+        ))
+      ) : (
+        <p>Постов нет</p>
+      )}
     </div>
   );
 }
