@@ -15,7 +15,7 @@ export async function loader() {
 
 function Root() {
   const { posts } = useLoaderData() as {
-    posts: { id: number; content: string }[];
+    posts: { id: number; content: string; created: number }[];
   };
   console.log(posts);
   return (

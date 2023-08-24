@@ -1,13 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { Form, redirect, useNavigate } from "react-router-dom";
 
-export async function action({ request }) {
-  console.log(request);
-  // console.log(request.formData());
-
+export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
+
   const response = await fetch("http://localhost:7070/posts", {
     method: "POST",
     body: JSON.stringify(data),
