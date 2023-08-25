@@ -1,27 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-import moment from "moment";
-
-moment.updateLocale("ru", {
-  months: [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
-  ],
-});
-
-const getDate = (timestamp: number): string => {
-  return moment(timestamp).format("HH:mm DD MMMM YYYY");
-};
+import getDate from "../utils/getDate";
 
 function Post({
   created,

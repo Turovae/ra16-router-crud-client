@@ -1,7 +1,10 @@
 import { ChangeEvent, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function EditPost({ body }: { body: string }) {
-  const [text, setText] = useState(body);
+function EditPost() {
+  const { state } = useLocation();
+
+  const [text, setText] = useState(state.content);
 
   const changeText = (evt: ChangeEvent<HTMLInputElement>) => {
     setText(evt.target.value);
