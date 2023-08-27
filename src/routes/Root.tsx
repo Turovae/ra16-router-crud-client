@@ -1,17 +1,14 @@
-import { useLoaderData, Form, useNavigate, Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import Posts from "../components/Posts";
 
+const URL = import.meta.env.VITE_URL || "http://localhost:7070";
+
 export async function loader() {
-  const response = await fetch("http://localhost:7070/posts");
+  const response = await fetch(`${URL}/posts`);
   const posts = await response.json();
 
   return { posts };
 }
-
-// export function action() {
-//   const navigate = useNavigate();
-//   return navigate("/posts/new");
-// }
 
 function Root() {
   const { posts } = useLoaderData() as {

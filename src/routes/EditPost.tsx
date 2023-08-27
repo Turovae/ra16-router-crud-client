@@ -1,5 +1,29 @@
 import { ChangeEvent, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Form, Params, redirect, useLocation } from "react-router-dom";
+
+const URL = import.meta.env.VITE_URL || "http://localhost:7070";
+
+export async function action({
+  request,
+  params,
+}: {
+  request: Request;
+  params: Params;
+}) {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  const response = await fetch(`${URL}/posts/${params.id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    return redirect(`/posts/${params.id}`);
+  }
+
+  return null;
+}
 
 function EditPost() {
   const { state } = useLocation();
@@ -11,7 +35,7 @@ function EditPost() {
   };
 
   return (
-    <form className="post-edit">
+    <Form className="post-edit" method="POST">
       <div className="post-control top">
         <h2 className="edit-title">Редактировать публикацию</h2>
         <button className="btn btn-icon">
@@ -25,6 +49,7 @@ function EditPost() {
           placeholder="Введите текст"
           value={text}
           onChange={changeText}
+          name="content"
         />
       </div>
       <div className="post-control bottom">
@@ -32,7 +57,7 @@ function EditPost() {
           Сохранить
         </button>
       </div>
-    </form>
+    </Form>
   );
 }
 

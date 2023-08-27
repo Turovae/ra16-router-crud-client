@@ -1,16 +1,18 @@
-import { redirect, useLoaderData, Form, Link } from "react-router-dom";
+import { redirect, useLoaderData, Form, Link, Params } from "react-router-dom";
 import getDate from "../utils/getDate";
 
-export async function loader({ params }) {
-  const response = await fetch(`http://localhost:7070/posts/${params.id}`);
+const URL = import.meta.env.VITE_URL || "http://localhost:7070";
+
+export async function loader({ params }: { params: Params }) {
+  const response = await fetch(`${URL}/posts/${params.id}`);
   const post = await response.json();
 
   return post;
 }
 
-export async function action({ params }) {
+export async function action({ params }: { params: Params }) {
   console.log(params);
-  const response = await fetch(`http://localhost:7070/posts/${params.id}`, {
+  const response = await fetch(`${URL}/posts/${params.id}`, {
     method: "DELETE",
   });
 
@@ -32,8 +34,13 @@ function ViewPost() {
     <div className="post-view">
       <div className="post">
         <div className="post-header">
-          <span className="post-author">No Name</span>{" "}
-          <span className="post-created">{getDate(post.created)}</span>
+          <div className="post-info">
+            <span className="post-author">No Name</span>{" "}
+            <span className="post-created">{getDate(post.created)}</span>
+          </div>
+          <Link to="/" className="btn btn-icon btn-close">
+            <span className="material-symbols-outlined">close</span>
+          </Link>
         </div>
         <div className="post-content">{post.content}</div>
       </div>

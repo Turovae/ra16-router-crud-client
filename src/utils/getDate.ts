@@ -17,8 +17,8 @@ moment.locale("ru", {
   ],
   relativeTime: {
     past: '%s',
-    s: '%d сек.',
-    ss: '%d сек.',
+    s: 'только что',
+    ss: 'только что',
     m: '%d мин.',
     mm: '%d мин.',
     h: '%d час.',

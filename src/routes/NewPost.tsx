@@ -1,11 +1,13 @@
 import { ChangeEvent, useState } from "react";
 import { Form, redirect, useNavigate } from "react-router-dom";
 
+const URL = import.meta.env.VITE_URL || "http://localhost:7070";
+
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-  const response = await fetch("http://localhost:7070/posts", {
+  const response = await fetch(`${URL}/posts`, {
     method: "POST",
     body: JSON.stringify(data),
   });

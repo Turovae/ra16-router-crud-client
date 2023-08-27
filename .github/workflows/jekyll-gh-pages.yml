@@ -8,8 +8,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# env:
-#   VITE_URL: https://ra16-hooks-usejsonfetch-server.onrender.com
+env:
+  VITE_URL: https://ra16-router-crud-server.onrender.com
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:

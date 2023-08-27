@@ -14,7 +14,7 @@ import ViewPost, {
   loader as viewPostLoader,
   action as viewPostAction,
 } from "./routes/ViewPost.tsx";
-import EditPost from "./routes/EditPost.tsx";
+import EditPost, { action as editPostAction } from "./routes/EditPost.tsx";
 import ErrorPage from "./components/ErrorPage.tsx";
 
 const router = createBrowserRouter(
@@ -28,15 +28,16 @@ const router = createBrowserRouter(
         loader={viewPostLoader}
         action={viewPostAction}
       />
-      <Route path="posts/:id/edit" element={<EditPost />} />
+      <Route
+        path="posts/:id/edit"
+        element={<EditPost />}
+        action={editPostAction}
+      />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <BrowserRouter>
-  //   <App />
-  // </BrowserRouter>
   <React.StrictMode>
     <div className="app">
       <RouterProvider router={router} />
