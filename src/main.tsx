@@ -36,7 +36,7 @@ const router = createBrowserRouter(
     </Route>
   ),
   {
-    basename: "/ra16-router-crud-clien",
+    basename: "/ra16-router-crud-client",
   }
 );
 
