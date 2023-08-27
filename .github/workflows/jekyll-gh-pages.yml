@@ -10,6 +10,7 @@ on:
 
 env:
   VITE_URL: https://ra16-router-crud-server.onrender.com
+  VITE_PUBLIC_BASENAME: /ra16-router-crud-client
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:

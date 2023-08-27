@@ -14,7 +14,6 @@ function Root() {
   const { posts } = useLoaderData() as {
     posts: { id: number; content: string; created: number }[];
   };
-  console.log(posts);
   return (
     <>
       <div className="menu">

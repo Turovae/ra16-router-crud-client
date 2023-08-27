@@ -8,6 +8,8 @@ import {
   Route,
 } from "react-router-dom";
 
+const BASENAME = import.meta.env.VITE_PUBLIC_BASENAME || "/";
+
 import Root, { loader as rootLoader } from "./routes/Root.tsx";
 import NewPost, { action as newPostAction } from "./routes/NewPost.tsx";
 import ViewPost, {
@@ -36,7 +38,7 @@ const router = createBrowserRouter(
     </Route>
   ),
   {
-    basename: "/ra16-router-crud-client",
+    basename: BASENAME,
   }
 );
 
