@@ -34,7 +34,10 @@ const router = createBrowserRouter(
         action={editPostAction}
       />
     </Route>
-  )
+  ),
+  {
+    basename: "/ra16-router-crud-clien",
+  }
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
